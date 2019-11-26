@@ -11,21 +11,47 @@ const moviesGroups = {};
 // HomeWork: wyrenederować liste filmów według gatunków
 // oraz zrobić pomniższą listę przy pomocy Reduce
 
-movies.forEach(movie => {
-  if (Array.isArray(moviesGroups[movie.genere])) {
-    moviesGroups[movie.genere].push(movie);
-  } else {
-    moviesGroups[movie.genere] = [movie];
+// movies.forEach(movie => {
+//   if (Array.isArray(moviesGroups[movie.genre])) {
+//     moviesGroups[movie.genre].push(movie);
+//   } else {
+//     moviesGroups[movie.genre] = [movie];
+//   }
+// });
+
+movies.reduce((moviesGroups, movie, index) => {
+  if (index < 4) {
+    if (Array.isArray(moviesGroups[movie.genre])) {
+      moviesGroups[movie.genre].push(movie);
+    } else {
+      moviesGroups[movie.genre] = [movie];
+    }
   }
+  return moviesGroups;
 });
+
+console.log(moviesGroups);
+
+const moviesByGenre = [];
+for (let genre in moviesGroups) {
+  let elem = (
+    <div key={genre}>
+      <h1>{genre}</h1>
+      <MoviesList movies={moviesGroups[genre]} />
+    </div>
+  );
+  moviesByGenre.push(elem);
+}
 
 function App() {
   return (
     <div className="App">
+      {/* Zadanie 6
       <h1>Dobre filmy</h1>
       <MoviesList movies={goodMovies} />
       <h1>Słabe filmy</h1>
-      <MoviesList movies={badMovies} />
+      <MoviesList movies={badMovies} /> */}
+      {moviesByGenre}
     </div>
   );
 }
