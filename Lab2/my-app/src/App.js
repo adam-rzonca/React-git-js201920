@@ -6,8 +6,6 @@ import MoviesList from "./components/MoviesList";
 const goodMovies = movies.filter(movie => movie.rating > 6);
 const badMovies = movies.filter(movie => movie.rating <= 6);
 
-const moviesGroups = {};
-
 // HomeWork: wyrenederować liste filmów według gatunków
 // oraz zrobić pomniższą listę przy pomocy Reduce
 
@@ -19,18 +17,15 @@ const moviesGroups = {};
 //   }
 // });
 
-movies.reduce((moviesGroups, movie, index) => {
-  if (index < 4) {
-    if (Array.isArray(moviesGroups[movie.genre])) {
-      moviesGroups[movie.genre].push(movie);
-    } else {
-      moviesGroups[movie.genre] = [movie];
-    }
+const moviesGroups = movies.reduce((moviesGroups, movie) => {
+  if (Array.isArray(moviesGroups[movie.genre])) {
+    moviesGroups[movie.genre].push(movie);
+  } else {
+    moviesGroups[movie.genre] = [movie];
   }
-  return moviesGroups;
-});
 
-console.log(moviesGroups);
+  return moviesGroups;
+}, []);
 
 const moviesByGenre = [];
 for (let genre in moviesGroups) {
