@@ -8,11 +8,20 @@ const ContactPage = () => {
   // Ustawienie focusa przy montowaniu komponentu
   useEffect(() => {
     inputRef.current.focus();
-  });
+  }, []); // [] - oznacza, że useEffect wykona sie raz, po zamontowaniu komponentu
 
-  function validateEmail(text) {
+  const validateEmail = text => {
     return /\S+@\S+\.\S+/.test(text);
-  }
+  };
+
+  const handleButtonClick = () => {
+    if (validateEmail(email)) {
+      alert("Dziękujemy, skontaktujemy się z Toba pod adresem: " + email);
+      setEmail("");
+    } else {
+      alert("Podaj prawidłowy adres email");
+    }
+  };
 
   return (
     <div>
@@ -32,19 +41,7 @@ const ContactPage = () => {
           type="text"
           onChange={e => setEmail(e.target.value)}
         />
-        <button
-          onClick={() => {
-            if (validateEmail(email)) {
-              alert(
-                "Dziękujemy, skontaktujemy się z Toba pod adresem: " + email
-              );
-            } else {
-              alert("Podaj prawidłowy adres email");
-            }
-          }}
-        >
-          SEND
-        </button>
+        <button onClick={handleButtonClick}>SEND</button>
       </div>
     </div>
   );
