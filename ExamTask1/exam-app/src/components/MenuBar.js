@@ -1,10 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import StyledDiv from "components/StyledDiv";
 
 function MenuBar() {
   return (
     <nav className="navbar">
-      <div className="container">
+      <StyledDiv className="container">
         <ul className="nav">
           <li>
             <NavLink exact to="/">
@@ -22,7 +23,7 @@ function MenuBar() {
             </NavLink>
           </li>
         </ul>
-      </div>
+      </StyledDiv>
     </nav>
   );
 }

@@ -1,41 +1,64 @@
 import React from "react";
-import RadioButton from "components/RadioButton";
+import StyledDiv from "components/StyledDiv";
+import manufacturers from "services/manufacturers";
 
-function CatalogFilter() {
+function CatalogFilter({
+  manufacture,
+  handleManufactureChange,
+  name,
+  handleNameChange,
+  handleClearClick
+}) {
   return (
-    <div className="filter">
-      <div className="filter-header">
+    <StyledDiv className="filter">
+      <StyledDiv className="filter-header">
         <h4>Search</h4>
-        <span className="clear">Clear</span>
-      </div>
-      <div>
-        <input type="text" placeholder="search..."></input>
-      </div>
+        <a href="#" className="clear" onClick={handleClearClick}>
+          Clear
+        </a>
+      </StyledDiv>
+      <StyledDiv>
+        <input
+          type="text"
+          placeholder="search..."
+          value={name}
+          onChange={handleNameChange}
+        ></input>
+      </StyledDiv>
       <h4>Manufacturer</h4>
       <div>
-        <RadioButton
-          name="manufacturer"
-          id="all"
-          value="all"
-          for="all"
-          text="All"
-        />
-        <RadioButton
-          name="manufacturer"
-          id="apple"
-          value="apple"
-          for="apple"
-          text="Apple"
-        />
-        <RadioButton
-          name="manufacturer"
-          id="dell"
-          value="dell"
-          for="dell"
-          text="Dell"
-        />
+        <div>
+          <input
+            type="radio"
+            name="manufacturere"
+            checked={manufacture === manufacturers.all}
+            value={manufacturers.all}
+            onChange={handleManufactureChange}
+          />
+          <label>All</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            name="manufacturere"
+            checked={manufacture === manufacturers.apple}
+            value={manufacturers.apple}
+            onChange={handleManufactureChange}
+          />
+          <label>Apple</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            name="manufacturere"
+            checked={manufacture === manufacturers.dell}
+            value={manufacturers.dell}
+            onChange={handleManufactureChange}
+          />
+          <label>Dell</label>
+        </div>
       </div>
-    </div>
+    </StyledDiv>
   );
 }
 

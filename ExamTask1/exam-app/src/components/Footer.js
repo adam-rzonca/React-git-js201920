@@ -1,15 +1,16 @@
 import React from "react";
+import StyledDiv from "components/StyledDiv";
 
 function Footer() {
   return (
-    <div className="footer">
-      <div className="container">
+    <StyledDiv className="footer">
+      <StyledDiv className="container">
         <p>
           Shop © 2020 <br />
           Designed by Andrzej
         </p>
-      </div>
-    </div>
+      </StyledDiv>
+    </StyledDiv>
   );
 }
 

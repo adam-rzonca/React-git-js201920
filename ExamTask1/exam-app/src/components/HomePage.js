@@ -3,6 +3,7 @@ import HeaderBig from "components/HeaderBig";
 import HeaderSmall from "components/HeaderSmall";
 import ProductList from "components/ProductList";
 import ProductsService from "services/products.service";
+import StyledDiv from "components/StyledDiv";
 
 const firstCategoryTitle = "desktops";
 const firstCategoryFeaturedProducts = ProductsService.getProducts({
@@ -18,13 +19,13 @@ const secondCategoryFeaturedProducts = ProductsService.getProducts({
 
 function HomePage() {
   return (
-    <div className="container">
+    <StyledDiv className="container">
       <HeaderBig text="Welcome to our store" />
       <HeaderSmall text={firstCategoryTitle} />
       <ProductList productList={firstCategoryFeaturedProducts} />
       <HeaderSmall text={secondCategoryTitle} />
       <ProductList productList={secondCategoryFeaturedProducts} />
-    </div>
+    </StyledDiv>
   );
 }
 
