@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import manufacturers from "services/manufacturers";
 
 function CatalogFilter({
@@ -8,6 +8,12 @@ function CatalogFilter({
   handleNameChange,
   handleClearClick
 }) {
+  const searchRef = useRef(null);
+
+  useEffect(() => {
+    searchRef.current.focus();
+  }, []);
+
   return (
     <div className="filter">
       <div className="filter-header">
@@ -22,6 +28,7 @@ function CatalogFilter({
           placeholder="search..."
           value={name}
           onChange={handleNameChange}
+          ref={searchRef}
         ></input>
       </div>
       <h4>Manufacturer</h4>
