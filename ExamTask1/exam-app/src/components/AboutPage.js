@@ -1,10 +1,10 @@
 import React from "react";
 import HeaderBig from "components/HeaderBig";
-import StyledDiv from "components/StyledDiv";
+import Container from "components/Container";
 
 function HomePage() {
   return (
-    <StyledDiv className="container">
+    <Container>
       <HeaderBig text="About" />
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
@@ -29,7 +29,7 @@ function HomePage() {
         ac tristique tellus pellentesque pharetra. Quisque pharetra lectus
         molestie, posuere lectus eget, tempor justo.
       </p>
-    </StyledDiv>
+    </Container>
   );
 }
 

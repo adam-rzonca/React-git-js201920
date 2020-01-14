@@ -4,6 +4,25 @@ import manufacturers from "services/manufacturers";
 const all = manufacturers.all;
 
 class ProductsService {
+  // Funkcja dostaje obiekt z filtrami, które należy zastosować do listy produktów.
+  // Jeśli obiekt jest undefined, null lub {}, to żaden filtr nie zostanie zastosowany.
+  // Zasada działania funkcji opiera się na sprawdzeniu, czy warunek z filtra odpowiada obiektowi
+  // z tablicy Products.
+  // Np. filter = {"featured": false} sprawdzamy więc,
+  // czy obiekty z tablicy Products mają właściwość "featured" równą false
+
+  // Można podać kilka warunków w filtrze np:
+  // {
+  //   category: "desktop",
+  //   featured: true
+  // }
+
+  // W specjalny sposób potraktowane są właściwości "name" oraz "manufacture"
+  // Jeśli "manufacture" równa się "all", to nie stosujemy filtra
+  // Jeśli "name" to pusty string "", to nie stosujemy filtra
+  // Filtrowanie po "name" jest Case Sensitive oraz polega na sprawdzeniu,
+  // czy string zastosowany w filtrze zawiera sie w nazwie produktu
+
   static getProducts(filter) {
     let result = products;
 

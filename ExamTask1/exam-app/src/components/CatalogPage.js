@@ -1,14 +1,14 @@
 import React from "react";
 import HeaderBig from "components/HeaderBig";
 import Catalog from "components/Catalog";
-import StyledDiv from "components/StyledDiv";
+import Container from "components/Container";
 
 function CatalogPage() {
   return (
-    <StyledDiv className="container">
+    <Container>
       <HeaderBig text="Catalog" />
       <Catalog />
-    </StyledDiv>
+    </Container>
   );
 }
 

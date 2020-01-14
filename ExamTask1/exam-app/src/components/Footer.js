@@ -1,16 +1,16 @@
 import React from "react";
-import StyledDiv from "components/StyledDiv";
+import Container from "components/Container";
 
 function Footer() {
   return (
-    <StyledDiv className="footer">
-      <StyledDiv className="container">
+    <div className="footer">
+      <Container>
         <p>
           Shop © 2020 <br />
           Designed by Andrzej
         </p>
-      </StyledDiv>
-    </StyledDiv>
+      </Container>
+    </div>
   );
 }
 

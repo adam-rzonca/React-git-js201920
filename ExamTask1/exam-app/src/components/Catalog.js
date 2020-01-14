@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import CatalogFilter from "components/CatalogFilter";
 import ProductList from "components/ProductList";
 import ProductsService from "services/products.service";
-import StyledDiv from "components/StyledDiv";
+import Container from "components/Container";
 import manufacturers from "services/manufacturers";
 
 function Catalog() {
@@ -31,8 +31,8 @@ function Catalog() {
   // console.log(products);
 
   return (
-    <StyledDiv className="catalog">
-      <StyledDiv className="column-left">
+    <div className="catalog">
+      <div className="column-left">
         <CatalogFilter
           manufacture={manufacture}
           handleManufactureChange={handleManufactureChange}
@@ -40,11 +40,11 @@ function Catalog() {
           handleNameChange={handleNameChange}
           handleClearClick={handleClearClick}
         />
-      </StyledDiv>
-      <StyledDiv className="column-right">
+      </div>
+      <div className="column-right">
         <ProductList productList={products} />
-      </StyledDiv>
-    </StyledDiv>
+      </div>
+    </div>
   );
 }
 

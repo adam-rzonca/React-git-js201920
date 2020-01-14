@@ -1,12 +1,12 @@
 import React from "react";
 import HeaderBig from "components/HeaderBig";
-import StyledDiv from "components/StyledDiv";
+import Container from "components/Container";
 
 function Page404() {
   return (
-    <StyledDiv className="container">
+    <Container>
       <HeaderBig text="Page not found :(" />
-    </StyledDiv>
+    </Container>
   );
 }
 

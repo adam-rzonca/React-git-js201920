@@ -1,5 +1,4 @@
 import React from "react";
-import StyledDiv from "components/StyledDiv";
 import manufacturers from "services/manufacturers";
 
 function CatalogFilter({
@@ -10,21 +9,21 @@ function CatalogFilter({
   handleClearClick
 }) {
   return (
-    <StyledDiv className="filter">
-      <StyledDiv className="filter-header">
+    <div className="filter">
+      <div className="filter-header">
         <h4>Search</h4>
         <a href="#" className="clear" onClick={handleClearClick}>
           Clear
         </a>
-      </StyledDiv>
-      <StyledDiv>
+      </div>
+      <div>
         <input
           type="text"
           placeholder="search..."
           value={name}
           onChange={handleNameChange}
         ></input>
-      </StyledDiv>
+      </div>
       <h4>Manufacturer</h4>
       <div>
         <div>
@@ -58,7 +57,7 @@ function CatalogFilter({
           <label>Dell</label>
         </div>
       </div>
-    </StyledDiv>
+    </div>
   );
 }
 
