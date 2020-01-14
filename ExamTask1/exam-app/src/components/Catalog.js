@@ -17,9 +17,9 @@ function Catalog() {
   };
 
   const handleClearClick = e => {
+    e.preventDefault();
     setManufacture(manufacturers.all);
     setName("");
-    e.preventDefault();
   };
 
   const products = ProductsService.getProducts({
