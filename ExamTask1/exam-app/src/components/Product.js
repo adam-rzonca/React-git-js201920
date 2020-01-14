@@ -1,5 +1,6 @@
 import React from "react";
 import ProductsService from "services/products.service";
+import PropTypes from "prop-types";
 
 function Product(props) {
   const product = ProductsService.getProductById(props.id);
@@ -12,5 +13,7 @@ function Product(props) {
     </div>
   );
 }
+
+Product.propTypes = { id: PropTypes.string };
 
 export default Product;

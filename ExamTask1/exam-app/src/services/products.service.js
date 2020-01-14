@@ -20,7 +20,7 @@ class ProductsService {
   // W specjalny sposób potraktowane są właściwości "name" oraz "manufacture"
   // Jeśli "manufacture" równa się "all", to nie stosujemy filtra
   // Jeśli "name" to pusty string "", to nie stosujemy filtra
-  // Filtrowanie po "name" jest Case Sensitive oraz polega na sprawdzeniu,
+  // Filtrowanie po "name" polega na sprawdzeniu,
   // czy string zastosowany w filtrze zawiera sie w nazwie produktu
 
   static getProducts(filter) {
@@ -33,7 +33,6 @@ class ProductsService {
     for (let key in filter) {
       //console.log(key);
 
-      // Filtrowanie po name nie jest CaseSensitive
       // Pusty filtr traktujemy jak all
       // Wyświwtlamy wszystkie produkty, które w nazwie zawierają string z filtru
       if (key === "name") {
@@ -41,7 +40,9 @@ class ProductsService {
           result = result.filter(product => {
             // console.log("product[key]", product[key]);
             // console.log("filter[key]", filter[key]);
-            return product[key].includes(filter[key]);
+            return product[key]
+              .toLowerCase()
+              .includes(filter[key].toLowerCase());
           });
         }
         continue;

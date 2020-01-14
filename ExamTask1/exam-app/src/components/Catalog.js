@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import CatalogFilter from "components/CatalogFilter";
 import ProductList from "components/ProductList";
 import ProductsService from "services/products.service";
-import Container from "components/Container";
 import manufacturers from "services/manufacturers";
 
 function Catalog() {

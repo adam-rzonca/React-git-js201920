@@ -1,5 +1,6 @@
 import React from "react";
 import Product from "components/Product";
+import PropTypes from "prop-types";
 
 function ProductList(props) {
   const productsComponentList = props.productList.map(product => {
@@ -8,5 +9,7 @@ function ProductList(props) {
 
   return <div className="products">{productsComponentList}</div>;
 }
+
+ProductList.propTypes = { productList: PropTypes.array };
 
 export default ProductList;
