@@ -1,11 +1,11 @@
 import React, { useEffect, useRef } from "react";
-import manufacturers from "services/manufacturers";
+import ProductsService from "services/products.service";
 
 function CatalogFilter({
   manufacture,
   handleManufactureChange,
-  name,
-  handleNameChange,
+  searchText,
+  handleSearchTextChange,
   handleClearClick
 }) {
   const searchRef = useRef(null);
@@ -26,46 +26,47 @@ function CatalogFilter({
         <input
           type="text"
           placeholder="search..."
-          value={name}
-          onChange={handleNameChange}
+          value={searchText}
+          onChange={handleSearchTextChange}
           ref={searchRef}
         ></input>
       </div>
       <h4>Manufacturer</h4>
-      <div>
-        <div>
-          <input
-            type="radio"
-            name="manufacturere"
-            checked={manufacture === manufacturers.all}
-            value={manufacturers.all}
-            onChange={handleManufactureChange}
-          />
-          <label>All</label>
-        </div>
-        <div>
-          <input
-            type="radio"
-            name="manufacturere"
-            checked={manufacture === manufacturers.apple}
-            value={manufacturers.apple}
-            onChange={handleManufactureChange}
-          />
-          <label>Apple</label>
-        </div>
-        <div>
-          <input
-            type="radio"
-            name="manufacturere"
-            checked={manufacture === manufacturers.dell}
-            value={manufacturers.dell}
-            onChange={handleManufactureChange}
-          />
-          <label>Dell</label>
-        </div>
-      </div>
+      <div>{getRadioButtons(manufacture, handleManufactureChange)}</div>
     </div>
   );
 }
 
 export default CatalogFilter;
+
+function getRadioButtons(manufacture, handleManufactureChange) {
+  const radioButtons = [
+    <div key={ProductsService.all}>
+      <input
+        type="radio"
+        name="manufacturere"
+        checked={manufacture === ProductsService.all}
+        value={ProductsService.all}
+        onChange={handleManufactureChange}
+      />
+      <label>All</label>
+    </div>
+  ];
+
+  ProductsService.getManufacturersList().forEach(elem => {
+    radioButtons.push(
+      <div key={elem}>
+        <input
+          type="radio"
+          name="manufacturere"
+          checked={manufacture === elem}
+          value={elem}
+          onChange={handleManufactureChange}
+        />
+        <label>{elem}</label>
+      </div>
+    );
+  });
+
+  return radioButtons;
+}

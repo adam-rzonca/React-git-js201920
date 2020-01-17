@@ -2,29 +2,28 @@ import React, { useState } from "react";
 import CatalogFilter from "components/CatalogFilter";
 import ProductList from "components/ProductList";
 import ProductsService from "services/products.service";
-import manufacturers from "services/manufacturers";
 
 function Catalog() {
-  const [name, setName] = useState("");
-  const [manufacture, setManufacture] = useState(manufacturers.all);
+  const [searchText, setSearchText] = useState("");
+  const [manufacture, setManufacture] = useState(ProductsService.all);
 
   const handleManufactureChange = e => {
     setManufacture(e.target.value);
   };
 
-  const handleNameChange = e => {
-    setName(e.target.value);
+  const handleSearchTextChange = e => {
+    setSearchText(e.target.value);
   };
 
   const handleClearClick = e => {
     e.preventDefault();
-    setManufacture(manufacturers.all);
-    setName("");
+    setManufacture(ProductsService.all);
+    setSearchText("");
   };
 
   const products = ProductsService.getProducts({
     manufacture: manufacture,
-    name: name
+    name: searchText
   });
   // console.log(manufacture);
   // console.log(products);
@@ -35,8 +34,8 @@ function Catalog() {
         <CatalogFilter
           manufacture={manufacture}
           handleManufactureChange={handleManufactureChange}
-          name={name}
-          handleNameChange={handleNameChange}
+          searchText={searchText}
+          handleSearchTextChange={handleSearchTextChange}
           handleClearClick={handleClearClick}
         />
       </div>

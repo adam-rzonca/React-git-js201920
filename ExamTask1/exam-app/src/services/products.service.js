@@ -1,9 +1,8 @@
 import products from "products.json";
-import manufacturers from "services/manufacturers";
-
-const all = manufacturers.all;
 
 class ProductsService {
+  static all = "All";
+
   // Funkcja dostaje obiekt z filtrami, które należy zastosować do listy produktów.
   // Jeśli obiekt jest undefined, null lub {}, to żaden filtr nie zostanie zastosowany.
   // Zasada działania funkcji opiera się na sprawdzeniu, czy warunek z filtra odpowiada obiektowi
@@ -50,12 +49,24 @@ class ProductsService {
 
       // Jeśli jako manufacture podamy all,
       // to wyświetlamy wszystkich producentów
-      if (key === "manufacture" && filter[key] === all) {
+      if (key === "manufacture" && filter[key] === this.all) {
         continue;
       }
 
       result = result.filter(product => product[key] === filter[key]);
     }
+
+    return result;
+  }
+
+  static getManufacturersList() {
+    const result = [];
+
+    products.forEach(element => {
+      if (result.indexOf(element.manufacture) === -1) {
+        result.push(element.manufacture);
+      }
+    });
 
     return result;
   }
