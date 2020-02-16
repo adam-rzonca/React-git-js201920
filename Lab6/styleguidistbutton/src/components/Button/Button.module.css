@@ -1,0 +1,15 @@
+.small {
+  height: 20px;
+}
+
+.normal {
+  height: 40px;
+}
+
+.big {
+  height: 80px;
+}
+
+.dark {
+  filter: invert(100%);
+}
