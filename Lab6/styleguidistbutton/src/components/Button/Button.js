@@ -3,6 +3,9 @@ import styles from "./Button.module.css";
 import PropTypes from "prop-types";
 import classNames from "classnames/bind";
 
+// Tworzenie dokumentacji komponentu do podglądu online:
+// https://react-styleguidist.js.org/docs/getting-started.html
+
 // https://github.com/JedWatson/classnames
 const cx = classNames.bind(styles);
 
