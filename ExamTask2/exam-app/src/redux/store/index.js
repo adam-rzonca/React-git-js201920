@@ -16,7 +16,7 @@ const store = createStore(
   {
     searchText: "",
     manufacturer: ProductsService.all,
-    products: ProductsService.getProducts(),
+    products: [],
   },
   composeWithDevTools(applyMiddleware(logger))
 );

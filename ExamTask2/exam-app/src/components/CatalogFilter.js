@@ -1,15 +1,28 @@
 import React, { useEffect, useRef } from "react";
 import ProductsService from "services/products.service";
+import { useSelector, useDispatch } from "react-redux";
+import { setSearchText, setManufacturer } from "redux/actions";
 
-function CatalogFilter({
-  manufacturer,
-  handleManufactureChange,
-  searchText,
-  handleSearchTextChange,
-  handleClearClick,
-  manufacturersList,
-}) {
+function CatalogFilter() {
+  const searchText = useSelector((state) => state.searchText);
+  const manufacturer = useSelector((state) => state.manufacturer);
+  const dispatch = useDispatch();
+
   const searchRef = useRef(null);
+
+  const handleManufactureChange = (e) => {
+    dispatch(setManufacturer(e.target.value));
+  };
+
+  const handleSearchTextChange = (e) => {
+    dispatch(setSearchText(e.target.value));
+  };
+
+  const handleClearClick = (e) => {
+    e.preventDefault();
+    dispatch(setManufacturer(ProductsService.all));
+    dispatch(setSearchText(""));
+  };
 
   useEffect(() => {
     searchRef.current.focus();
@@ -33,24 +46,14 @@ function CatalogFilter({
         ></input>
       </div>
       <h4>Manufacturer</h4>
-      <div>
-        {getRadioButtons(
-          manufacturer,
-          handleManufactureChange,
-          manufacturersList
-        )}
-      </div>
+      <div>{getRadioButtons(manufacturer, handleManufactureChange)}</div>
     </div>
   );
 }
 
 export default CatalogFilter;
 
-function getRadioButtons(
-  manufacturer,
-  handleManufactureChange,
-  manufacturersList
-) {
+function getRadioButtons(manufacturer, handleManufactureChange) {
   const radioButtons = [
     <div key={ProductsService.all}>
       <input
@@ -64,7 +67,7 @@ function getRadioButtons(
     </div>,
   ];
 
-  manufacturersList.forEach((elem) => {
+  ProductsService.getManufacturersList().forEach((elem) => {
     radioButtons.push(
       <div key={elem}>
         <input
