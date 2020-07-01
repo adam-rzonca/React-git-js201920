@@ -7,7 +7,7 @@ import Footer from "components/Footer";
 import Page404 from "components/Page404";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // import { Provider } from "react-redux";
-// import store from "./redux/store/index.js";
+import store from "./redux/store/index.js";
 
 function App() {
   return (

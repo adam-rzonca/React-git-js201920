@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import CatalogFilter from "components/CatalogFilter";
 import ProductList from "components/ProductList";
 import ProductsService from "services/products.service";
-//import { useSelector, useDispatch } from "react-redux";
-//import { SET_SEARCH_TEXT, SET_MANUFACTURER } from "redux/actions";
+import { useSelector, useDispatch } from "react-redux";
+import { SET_SEARCH_TEXT, SET_MANUFACTURER } from "redux/actions";
 
 function Catalog() {
   const [searchText, setSearchText] = useState("");

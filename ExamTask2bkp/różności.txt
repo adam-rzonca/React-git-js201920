@@ -1,0 +1,14 @@
+React projekt
+Reselect - biblioteka
+Hosting na Heroku
+
+Redux Toolkit - ułatwienie korzystnia z Reduxa
+
+Do debugowaia REDUXa:
+https://github.com/reduxjs/redux-devtools - chrome extension 
+https://github.com/zalmoxisus/redux-devtools-extension
+1.3 npm install ...
+
+
+Redux tutorial:
+https://www.freecodecamp.org/news/understanding-redux-the-worlds-easiest-guide-to-beginning-redux-c695f45546f6/
