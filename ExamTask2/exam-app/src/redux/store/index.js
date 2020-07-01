@@ -14,9 +14,9 @@ const logger = (store) => (next) => (action) => {
 const store = createStore(
   rootReducer,
   {
-    searchText: 0,
+    searchText: "",
     manufacturer: ProductsService.all,
-    products: [],
+    products: ProductsService.getProducts(),
   },
   composeWithDevTools(applyMiddleware(logger))
 );

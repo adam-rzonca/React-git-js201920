@@ -36,7 +36,7 @@ class ProductsService {
       // Wyświwtlamy wszystkie produkty, które w nazwie zawierają string z filtru
       if (key === "name") {
         if (filter[key] !== "") {
-          result = result.filter(product => {
+          result = result.filter((product) => {
             // console.log("product[key]", product[key]);
             // console.log("filter[key]", filter[key]);
             return product[key]
@@ -53,7 +53,7 @@ class ProductsService {
         continue;
       }
 
-      result = result.filter(product => product[key] === filter[key]);
+      result = result.filter((product) => product[key] === filter[key]);
     }
 
     return result;
@@ -62,7 +62,7 @@ class ProductsService {
   static getManufacturersList() {
     const result = [];
 
-    products.forEach(element => {
+    products.forEach((element) => {
       if (result.indexOf(element.manufacture) === -1) {
         result.push(element.manufacture);
       }
@@ -72,7 +72,7 @@ class ProductsService {
   }
 
   static getProductById(id) {
-    return products.find(product => product.id === id);
+    return products.find((product) => product.id === id);
   }
 }
 

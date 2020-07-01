@@ -1,34 +1,34 @@
-import React, { useState } from "react";
+import React from "react";
 import CatalogFilter from "components/CatalogFilter";
 import ProductList from "components/ProductList";
 import ProductsService from "services/products.service";
 import { useSelector, useDispatch } from "react-redux";
-import { SET_SEARCH_TEXT, SET_MANUFACTURER } from "redux/actions";
+import { setSearchText, setManufacturer } from "redux/actions";
 
 function Catalog() {
-  const [searchText, setSearchText] = useState("");
-  const [manufacturer, setManufacturer] = useState(ProductsService.all);
+  const searchText = useSelector((state) => state.searchText);
+  const manufacturer = useSelector((state) => state.manufacturer);
+
+  const dispatch = useDispatch();
 
   const handleManufactureChange = (e) => {
-    setManufacturer(e.target.value);
+    dispatch(setManufacturer(e.target.value));
   };
 
   const handleSearchTextChange = (e) => {
-    setSearchText(e.target.value);
+    dispatch(setSearchText(e.target.value));
   };
 
   const handleClearClick = (e) => {
     e.preventDefault();
-    setManufacturer(ProductsService.all);
-    setSearchText("");
+    dispatch(setManufacturer(ProductsService.all));
+    dispatch(setSearchText(""));
   };
 
   const products = ProductsService.getProducts({
     manufacture: manufacturer,
     name: searchText,
   });
-  // console.log(manufacture);
-  // console.log(products);
 
   return (
     <div className="catalog">
