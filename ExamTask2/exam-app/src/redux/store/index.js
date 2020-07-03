@@ -22,6 +22,7 @@ const store = createStore(
     products: null,
     isFetching: false,
     error: null,
+    cart: [],
   },
   composeWithDevTools(applyMiddleware(thunk, logger))
 );

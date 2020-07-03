@@ -22,6 +22,12 @@ const rootReducer = (state, action) => {
         products: null,
         error: action.error,
       };
+    case ACTION_TYPES.ADD_ITEM_TO_CART:
+      console.log("ADD_ITEM_TO_CART", state.cart);
+      return {
+        ...state,
+        cart: [...state.cart, action.id],
+      };
     default:
       return state;
   }

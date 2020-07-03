@@ -51,13 +51,18 @@ body {
   float: left;
 }
 
-.nav > li > a {
+.nav > li > a,
+.nav-li-right {
   font-size: 16px;
   font-weight: 100;
   padding: 15px 35px;
   color: #fff;
   display: block;
   text-decoration: none;
+}
+
+.nav-li-right {
+  float: right;
 }
 
 /* Navbars */
@@ -101,6 +106,21 @@ body {
   color: #00a1b4;
   padding: 3px 0px;
 }
+
+.add-button {
+  font-size: 24px;
+  color: #00a1b4;
+  background-color: white;
+  margin-bottom: 15px;
+  border: none;
+  outline: none;
+}
+
+.add-button:hover {
+  color: white;
+  background-color: #00a1b4;
+}
+
 /* Products */
 
 /* Catalog */

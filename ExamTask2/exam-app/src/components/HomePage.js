@@ -12,6 +12,7 @@ const secondCategoryTitle = "tablets";
 
 function HomePage() {
   const products = useSelector((state) => state.products);
+  const error = useSelector((state) => state.error);
   const dispatch = useDispatch();
 
   const firstCategoryFeaturedProducts = filterProducts(products, {

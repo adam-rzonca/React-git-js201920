@@ -6,6 +6,7 @@ export const ACTION_TYPES = {
   START_FETCH_PRODUCTS_LIST: "PRODUCTS_LIST",
   FAIL_FETCH_PRODUCTS_LIST: "FAIL_FETCH_PRODUCTS_LIST",
   FINISH_FETCH_PRODUCTS_LIST: "FINISH_FETCH_PRODUCTS_LIST",
+  ADD_ITEM_TO_CART: "ADD_ITEM_TO_CART",
 };
 
 export const setSearchText = (searchText) => ({
@@ -38,6 +39,12 @@ export const fetchProductsList = () => async (dispatch) => {
     const products = await fetchProductsFromApi();
     dispatch(finishFetchProductsList(products));
   } catch (error) {
+    console.log("Fetch error:", error);
     dispatch(failFetchProductsList(error));
   }
 };
+
+export const addItemToCart = (id) => ({
+  type: ACTION_TYPES.ADD_ITEM_TO_CART,
+  id,
+});

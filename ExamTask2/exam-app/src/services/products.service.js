@@ -1,3 +1,5 @@
+const ld = require("lodash");
+
 const all = "All";
 
 // Funkcja dostaje listę produktów oraz obiekt z filtrami, które należy zastosować do listy produktów.
@@ -92,10 +94,25 @@ async function fetchProductsFromApi() {
   }
 }
 
+function cartCost(products, cart) {
+  console.log("cartCost", products, cart);
+
+  const result = cart.reduce((cost, id) => {
+    const product = getProductById(products, id);
+    console.log("product", product);
+
+    return ld.round(cost + (product ? parseFloat(product.amount) : 0), 2);
+  }, 0);
+
+  console.log("result", result);
+  return result;
+}
+
 export {
   all,
   filterProducts,
   getManufacturersList,
   getProductById,
   fetchProductsFromApi,
+  cartCost,
 };
