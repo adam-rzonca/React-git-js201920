@@ -6,8 +6,22 @@ const rootReducer = (state, action) => {
       return { ...state, searchText: action.searchText };
     case ACTION_TYPES.SET_MANUFACTURER:
       return { ...state, manufacturer: action.manufacturer };
-    case ACTION_TYPES.SET_PRODUCTS_LIST:
-      return { ...state, products: action.products };
+    case ACTION_TYPES.START_FETCH_PRODUCTS_LIST:
+      return { ...state, isFetching: true };
+    case ACTION_TYPES.FINISH_FETCH_PRODUCTS_LIST:
+      return {
+        ...state,
+        isFetching: false,
+        products: action.products,
+        error: null,
+      };
+    case ACTION_TYPES.FAIL_FETCH_PRODUCTS_LIST:
+      return {
+        ...state,
+        isFetching: false,
+        products: null,
+        error: action.error,
+      };
     default:
       return state;
   }

@@ -2,8 +2,8 @@ import React from "react";
 import Product from "components/Product";
 import PropTypes from "prop-types";
 
-function ProductList(props) {
-  const productsComponentList = props.productList.map(product => {
+function ProductList({ productList }) {
+  const productsComponentList = productList.map((product) => {
     return <Product key={product.id} id={product.id} />;
   });
 

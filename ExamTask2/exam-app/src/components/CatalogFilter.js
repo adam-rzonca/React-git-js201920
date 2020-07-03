@@ -1,13 +1,13 @@
 import React, { useEffect, useRef } from "react";
-import ProductsService from "services/products.service";
+import { all, getManufacturersList } from "services/products.service";
 import { useSelector, useDispatch } from "react-redux";
 import { setSearchText, setManufacturer } from "redux/actions";
 
 function CatalogFilter() {
   const searchText = useSelector((state) => state.searchText);
   const manufacturer = useSelector((state) => state.manufacturer);
+  const products = useSelector((state) => state.products);
   const dispatch = useDispatch();
-
   const searchRef = useRef(null);
 
   const handleManufactureChange = (e) => {
@@ -20,7 +20,7 @@ function CatalogFilter() {
 
   const handleClearClick = (e) => {
     e.preventDefault();
-    dispatch(setManufacturer(ProductsService.all));
+    dispatch(setManufacturer(all));
     dispatch(setSearchText(""));
   };
 
@@ -46,28 +46,30 @@ function CatalogFilter() {
         ></input>
       </div>
       <h4>Manufacturer</h4>
-      <div>{getRadioButtons(manufacturer, handleManufactureChange)}</div>
+      <div>
+        {getRadioButtons(products, manufacturer, handleManufactureChange)}
+      </div>
     </div>
   );
 }
 
 export default CatalogFilter;
 
-function getRadioButtons(manufacturer, handleManufactureChange) {
+function getRadioButtons(products, manufacturer, handleManufactureChange) {
   const radioButtons = [
-    <div key={ProductsService.all}>
+    <div key={all}>
       <input
         type="radio"
         name="manufacturer"
-        checked={manufacturer === ProductsService.all}
-        value={ProductsService.all}
+        checked={manufacturer === all}
+        value={all}
         onChange={handleManufactureChange}
       />
       <label>All</label>
     </div>,
   ];
 
-  ProductsService.getManufacturersList().forEach((elem) => {
+  getManufacturersList(products).forEach((elem) => {
     radioButtons.push(
       <div key={elem}>
         <input

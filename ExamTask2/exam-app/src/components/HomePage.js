@@ -1,23 +1,36 @@
-import React from "react";
+import React, { useEffect } from "react";
 import HeaderBig from "components/HeaderBig";
 import HeaderSmall from "components/HeaderSmall";
 import ProductList from "components/ProductList";
-import ProductsService from "services/products.service";
+import { filterProducts } from "services/products.service";
 import Container from "components/Container";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchProductsList } from "redux/actions";
 
 const firstCategoryTitle = "desktops";
-const firstCategoryFeaturedProducts = ProductsService.getProducts({
-  category: "desktop",
-  featured: true
-});
-
 const secondCategoryTitle = "tablets";
-const secondCategoryFeaturedProducts = ProductsService.getProducts({
-  category: "tablet",
-  featured: true
-});
 
 function HomePage() {
+  const products = useSelector((state) => state.products);
+  const dispatch = useDispatch();
+
+  const firstCategoryFeaturedProducts = filterProducts(products, {
+    category: "desktop",
+    featured: true,
+  });
+  const secondCategoryFeaturedProducts = filterProducts(products, {
+    category: "tablet",
+    featured: true,
+  });
+
+  const fetchData = async () => {
+    await dispatch(fetchProductsList());
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <Container>
       <HeaderBig text="Welcome to our store" />

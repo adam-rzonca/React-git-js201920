@@ -1,9 +1,11 @@
 import React from "react";
-import ProductsService from "services/products.service";
+import { getProductById } from "services/products.service";
 import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
 
-function Product(props) {
-  const product = ProductsService.getProductById(props.id);
+function Product({ id }) {
+  const products = useSelector((state) => state.products);
+  const product = getProductById(products, id);
 
   return (
     <div className="product">

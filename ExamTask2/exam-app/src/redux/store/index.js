@@ -1,6 +1,9 @@
 import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
-import ProductsService from "services/products.service";
+import { all } from "services/products.service";
+import thunk from "redux-thunk";
+
+// import productList from "../../products.json";
 
 import rootReducer from "../reducers";
 
@@ -15,10 +18,12 @@ const store = createStore(
   rootReducer,
   {
     searchText: "",
-    manufacturer: ProductsService.all,
-    products: [],
+    manufacturer: all,
+    products: null,
+    isFetching: false,
+    error: null,
   },
-  composeWithDevTools(applyMiddleware(logger))
+  composeWithDevTools(applyMiddleware(thunk, logger))
 );
 
 export default store;
