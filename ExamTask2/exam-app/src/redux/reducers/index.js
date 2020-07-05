@@ -23,10 +23,16 @@ const rootReducer = (state, action) => {
         error: action.error,
       };
     case ACTION_TYPES.ADD_ITEM_TO_CART:
-      console.log("ADD_ITEM_TO_CART", state.cart);
       return {
         ...state,
         cart: [...state.cart, action.id],
+      };
+    case ACTION_TYPES.REMOVE_ITEM_FROM_CART:
+      return {
+        ...state,
+        cart: state.cart.filter((id) => {
+          return id !== action.id;
+        }),
       };
     default:
       return state;

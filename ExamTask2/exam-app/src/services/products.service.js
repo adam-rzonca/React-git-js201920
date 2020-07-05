@@ -95,17 +95,11 @@ async function fetchProductsFromApi() {
 }
 
 function cartCost(products, cart) {
-  console.log("cartCost", products, cart);
-
-  const result = cart.reduce((cost, id) => {
+  return cart.reduce((cost, id) => {
     const product = getProductById(products, id);
-    console.log("product", product);
 
     return ld.round(cost + (product ? parseFloat(product.amount) : 0), 2);
   }, 0);
-
-  console.log("result", result);
-  return result;
 }
 
 export {

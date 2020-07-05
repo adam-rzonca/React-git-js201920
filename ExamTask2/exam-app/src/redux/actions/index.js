@@ -7,6 +7,7 @@ export const ACTION_TYPES = {
   FAIL_FETCH_PRODUCTS_LIST: "FAIL_FETCH_PRODUCTS_LIST",
   FINISH_FETCH_PRODUCTS_LIST: "FINISH_FETCH_PRODUCTS_LIST",
   ADD_ITEM_TO_CART: "ADD_ITEM_TO_CART",
+  REMOVE_ITEM_FROM_CART: "REMOVE_ITEM_FROM_CART",
 };
 
 export const setSearchText = (searchText) => ({
@@ -46,5 +47,10 @@ export const fetchProductsList = () => async (dispatch) => {
 
 export const addItemToCart = (id) => ({
   type: ACTION_TYPES.ADD_ITEM_TO_CART,
+  id,
+});
+
+export const removeItemFromCart = (id) => ({
+  type: ACTION_TYPES.REMOVE_ITEM_FROM_CART,
   id,
 });

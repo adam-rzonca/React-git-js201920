@@ -107,7 +107,7 @@ body {
   padding: 3px 0px;
 }
 
-.add-button {
+.my-button {
   font-size: 24px;
   color: #00a1b4;
   background-color: white;
@@ -116,7 +116,7 @@ body {
   outline: none;
 }
 
-.add-button:hover {
+.my-button:hover {
   color: white;
   background-color: #00a1b4;
 }
