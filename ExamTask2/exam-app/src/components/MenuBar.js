@@ -9,7 +9,7 @@ function MenuBar() {
   const cart = useSelector((state) => state.cart);
 
   const cartLabel = cart.length
-    ? "(items: " + cart.length + " cost: " + cartCost(products, cart) + ")"
+    ? "(items: " + cart.length + " cost: $" + cartCost(products, cart) + ")"
     : "";
   return (
     <nav className="navbar">
