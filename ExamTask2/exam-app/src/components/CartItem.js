@@ -17,10 +17,11 @@ function CartItem({ id, qty }) {
   const value = ld.round(product.amount * qty, 2);
 
   return (
-    <div key={id} className="cart-item">
+    <div key={id} className="product">
       <img src={product.image} alt={product.name}></img>
-      <p>Qty: {qty}</p>
-      <p>Value: ${value}</p>
+      <p className="price">Qty: {qty}</p>
+      <br />
+      <p className="price">Value: ${value}</p>
       <h3>{product.name}</h3>
       <button className={"my-button"} onClick={removeFromCart}>
         Remove

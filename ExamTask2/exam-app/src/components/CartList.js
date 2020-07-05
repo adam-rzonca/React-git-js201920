@@ -12,7 +12,7 @@ function CartList() {
   }
 
   const cartList = getCartList(cart);
-  return <div>{cartList}</div>;
+  return <div className="products">{cartList}</div>;
 }
 
 function getCartList(cart) {
@@ -33,13 +33,8 @@ function getCartList(cart) {
   }
 
   cartList = cartList.map((item, index) => {
-    return (
-      <li key={item.id}>
-        <CartItem id={item.id} qty={item.qty} />
-      </li>
-    );
+    return <CartItem id={item.id} qty={item.qty} />;
   });
-  cartList = <ul>{cartList}</ul>;
 
   return cartList;
 }
